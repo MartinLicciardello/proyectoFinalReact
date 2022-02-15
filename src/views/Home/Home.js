@@ -1,9 +1,10 @@
 import React from 'react'
 import CharacterList from '../../components/CharacterList/CharacterList'
 
-const Home = () => {
+const Home = ({setFavouriteCharacter}) => {
   return (
-    <div><CharacterList/></div>
+    
+    <div><CharacterList setFavouriteCharacter={setFavouriteCharacter}/></div>
   )
 }
 

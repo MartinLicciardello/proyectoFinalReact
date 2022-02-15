@@ -2,9 +2,9 @@ import React, {useEffect,useState} from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import CharacterCard from '../../components/CharacterCard/CharacterCard';
+import './CharacterDetail.css';
 
-
-const CharacterDetail = () => {
+const CharacterDetail = ({setFavouriteCharacter}) => {
     const [character, setCharacter] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -15,7 +15,7 @@ const CharacterDetail = () => {
     
 
     useEffect(() => {
-      axios(`https://api.github.com/users${userID}`).then((res) =>
+      axios(`https://api.github.com/users/${userID}`).then((res) =>
         setCharacter(res.data)
       );
       setTimeout(() => {
@@ -24,21 +24,22 @@ const CharacterDetail = () => {
     }, [userID]);
   
     return (
-      <div className='CharacterList-Container'>
-        {isLoading ? (
-          <h1>Cargando detalle del usuario</h1>
-        ) : (
-          <div className='CharacterList-detail'>
-            {character.map((char) => {
-              return (
-                <div key={char.id}>
-                  <CharacterCard data={char} />
-                </div>
-              );
-            })}
-          </div>
-        )}
+
+      <div className="productDetail">
+  
+        {isLoading
+  
+          ?
+  
+          <p>Aguarde unos segundos</p>
+  
+          :
+  
+          <CharacterCard data={character} setFavouriteCharacter ={setFavouriteCharacter} />
+        }
+  
       </div>
+  
     );
   };
 

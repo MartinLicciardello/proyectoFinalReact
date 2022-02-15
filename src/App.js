@@ -15,23 +15,25 @@ import Home from './views/Home/Home';
 import About from './views/About/About';
 import Contact from './views/Contact/Contact';
 import CharacterDetail from './views/CharacterDetail/CharacterDetail';
+import { useState } from 'react';
 
 
 
 
 function App() {
-  return (
+  const [favouriteCharacter, setFavouriteCharacter] = useState([])
 
+  return (
+    
     <Router>
       <div className="App">
         <Header/>
-        <Nav/>
+        <Nav favouriteCharacter={favouriteCharacter}/>
         <Routes>
-          <Route path='/' element={<Home/>}></Route>
+          <Route path='/'  element={<Home setFavouriteCharacter={setFavouriteCharacter}  />}></Route>
           <Route path='/about' element={<About/>}></Route>
           <Route path='/contact' element={<Contact/>}></Route>
-          <Route path='/detail/:id' element={<CharacterDetail/>}></Route>
-
+          <Route path='/detail/:id' element={<CharacterDetail setFavouriteCharacter={setFavouriteCharacter} />}></Route>
 
         </Routes>
 

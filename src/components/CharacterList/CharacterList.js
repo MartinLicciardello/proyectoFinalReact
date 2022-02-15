@@ -3,7 +3,7 @@ import axios from 'axios';
 import CharacterCard from '../CharacterCard/CharacterCard';
 import { Link } from 'react-router-dom';
 import './CharList.css';
-const CharacterList = () => {
+const CharacterList = ({setFavouriteCharacter}) => {
 
   const [characters, setCharacters] = useState([]);
 
@@ -12,18 +12,6 @@ const CharacterList = () => {
     }, []);
 
 
-  // return (
-    
-  //   <div>{characters.map((char) => {
-  //     return(
-  //       <div>
-  //         <Link to= {`/detail/${char.char.id}`} //faltan comillas
-  //             <CharacterCard data={char}/>
-  //         </Link>
-  //       </div>
-  //     )
-  //   })}</div>
-  // )
 
 
 
@@ -34,7 +22,7 @@ const CharacterList = () => {
                       return (
                         <div key={char.id}>
                           <Link to={`/detail/${char.id}`} className='Link'>
-                            <CharacterCard data={char} />
+                            <CharacterCard data={char}  setFavouriteCharacter={setFavouriteCharacter}/>
                           </Link>
                         </div>
                       );

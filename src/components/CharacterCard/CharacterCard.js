@@ -4,7 +4,12 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 
-export default function CharacterCard({data}) {
+export default function CharacterCard({data,setFavouriteCharacter}){
+  function addCharacter(e){
+    
+    setFavouriteCharacter(state => [...state,data])
+  }
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -21,6 +26,7 @@ export default function CharacterCard({data}) {
          {data.html_url}
         </Typography>
       </CardContent>
+      <button onClick={addCharacter}>Agregar a Favoritos</button>
     </Card>
   );
 }
