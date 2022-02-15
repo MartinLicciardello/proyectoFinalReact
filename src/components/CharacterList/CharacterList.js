@@ -21,8 +21,10 @@ const CharacterList = ({setFavouriteCharacter}) => {
                     {characters.map((char) => {
                       return (
                         <div key={char.id}>
+                         <CharacterCard data={char}  setFavouriteCharacter={setFavouriteCharacter}/>
+
                           <Link to={`/detail/${char.id}`} className='Link'>
-                            <CharacterCard data={char}  setFavouriteCharacter={setFavouriteCharacter}/>
+                            Ver Persona
                           </Link>
                         </div>
                       );
